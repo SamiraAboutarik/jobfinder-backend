@@ -1,15 +1,14 @@
-[phases.build]
+[phases.install]
 cmds = [
-  "composer install --no-dev --optimize-autoloader",
-  "php artisan config:cache",
-  "php artisan route:cache"
+  "composer install --no-dev --optimize-autoloader"
 ]
 
-[phases.deploy]
+[phases.build]
 cmds = [
-  "php artisan migrate --force",
-  "php artisan db:seed --force"
+  "php artisan config:cache",
+  "php artisan route:cache",
+  "php artisan view:cache"
 ]
 
 [start]
-cmd = "php artisan serve --host=0.0.0.0 --port=$PORT"
+cmd = "php artisan migrate --force && php artisan db:seed --force && php artisan serve --host=0.0.0.0 --port=$PORT"
