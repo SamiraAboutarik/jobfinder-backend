@@ -6,6 +6,9 @@ use App\Http\Controllers\CandidatureController;
 use App\Http\Controllers\FavoriController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/test', function () {
+    return response()->json(['message' => 'API working']);
+});
 // ── Public ────────────────────────────────────────────────
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login',    [AuthController::class, 'login']);
